@@ -1199,3 +1199,18 @@ body {
   .cta-banner { margin-block-start: -120px; }
 
 }
+
+/* Forcer l’affichage du lien Nos avis clients dans le menu mobile */
+.navbar-list > li {
+  display: block;
+}
+
+.navbar-link {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+.navbar-link[href^="https://maps.app.goo.gl"] {
+  display: block !important;
+}

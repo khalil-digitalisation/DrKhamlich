@@ -27,6 +27,35 @@
     rel="stylesheet">
 </head>
 
+<style>
+  .image-container {
+    position: relative;
+  }
+
+  .swipe-arrow {
+    position: absolute;
+    top: 100%;               /* position verticale (centre par défaut) */
+    left: 100%;             /* juste après l’image */
+    transform: translate(-30%, 600%); /* ajustement fin */
+    font-size: 2rem;
+    color: #333;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  /* Version desktop : écran ≥ 768px */
+  @media (min-width: 768px) {
+    .swipe-arrow {
+      top: 45%;            /* légèrement plus haut */
+      left: 100%;
+      transform: translate(-10%, 600%);
+      font-size: 2.5rem;
+    }
+  }
+</style>
+
+
+
 <body id="top">
 
   <!-- 
@@ -43,27 +72,27 @@
           <li class="contact-item">
             <ion-icon name="mail-outline"></ion-icon>
 
-            <a href="mailto:khadkhamlich001@hotmail.com" class="contact-wwwwwwwwwwwwwlink">khadkhamlich001@hotmail.com</a>
+            <a href="mailto:khamlich.khadouj@gmail.com" class="contact-link">khamlich.khadouj@gmail.com</a>
           </li>
 
           <li class="contact-item">
             <ion-icon name="call-outline"></ion-icon>
 
-            <a href="tel:+212652769657" class="contact-link">+212 6 52 76 96 57</a>
+            <a href="tel:+212611381111" class="contact-link">+212 6 11 38 11 11</a>
           </li>
 
         </ul>
 
-        <ul href="tel:+212652769657" class="social-list">
+        <ul href="tel:+212611381111" class="social-list">
 
           <li>
-            <a href="tel:+212652769657" class="social-link">
+            <a href="tel:+212611381111" class="social-link">
               <ion-icon name="logo-whatsapp"></ion-icon>
             </a>
           </li>
 
           <li>
-            <a href="https://www.instagram.com/dr_khadoujkhamlich/" class="social-link" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/dr_khamlich/" class="social-link" target="_blank" rel="noopener noreferrer">
               <ion-icon name="logo-instagram"></ion-icon>
             </a>
           </li>
@@ -86,6 +115,16 @@
               <a href="#home" class="navbar-link" data-nav-link>Accueil</a>
             </li>
 
+		<li>
+		  <a href="https://maps.app.goo.gl/4cmf9kTKiSnMNAq38" 
+		     class="navbar-link" 
+		     data-nav-link 
+		     target="_blank" 
+		     rel="noopener noreferrer">
+		     Nos avis clients
+		  </a>
+		</li>
+
             <li>
               <a href="#service" class="navbar-link" data-nav-link>Services</a>
             </li>
@@ -94,18 +133,22 @@
               <a href="#transformation" class="navbar-link" data-nav-link>Nos Avant-Après</a>
             </li>
 
-            <li>
-              <a href="#about" class="navbar-link" data-nav-link>Informations</a>
-            </li>
 
             <li>
               <a href="#footer" class="navbar-link" data-nav-link>Contact</a>
+            </li>
+	    
+	   
+
+
+	    <li>
+              <a href="#about" class="navbar-link" data-nav-link>Informations</a>
             </li>
 
           </ul>
         </nav>
         
-<!--         <a href="#" class="btn">Prendre RDV</a> -->
+        <a href="https://dr-k-khamlich-clinique-dentaire-arribat-rabat-agdal.reservio.com/" target="_blank" rel="noopener noreferrer" class="btn">Prendre RDV</a>
 
         <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
           <ion-icon name="menu-sharp" aria-hidden="true" class="menu-icon"></ion-icon>
@@ -134,7 +177,7 @@
 
           <div class="hero-content">
 
-            <p class="section-subtitle">N'aie plus honte de sourire</p>
+            <p class="section-subtitle">Clinique dentaire Arribat - Rabat Agdal</p>
 
             <h1 class="h1 hero-title">Transforme ton sourire, change ta vie</h1>
 
@@ -143,9 +186,12 @@
 
             </p> 
 
+	<a href="https://dr-k-khamlich-clinique-dentaire-arribat-rabat-agdal.reservio.com/" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 16px;">Prendre RDV en ligne en 2 clics</a>
+
+
           </div>
 
-          <figure class="hero-banner">
+          <figure class="hero-banner"style="margin-top: -150px;">
             <img src="./assets/images/hero-banner.png" width="587" height="839" alt="hero banner" class="w-100">
           </figure>
 
@@ -362,6 +408,12 @@
           <p class="section-subtitle text-center">Nos Avant-Après</p>
 
           <h2 class="h2 section-title text-center">Transformations de sourire</h2>
+	  
+	<div class="image-container">
+	  <div class="swipe-arrow">➜</div>
+	</div>
+
+
 
           <ul class="has-scrollbar">
           
@@ -1103,7 +1155,7 @@
         <div class="container">
 
           <figure class="cta-banner">
-            <img src="./assets/images/cta-banner.png" width="1056" height="1076" loading="lazy" alt="cta banner"
+            <img src="./assets/images/doc-assistante.png" width="1056" height="1076" loading="lazy" alt="cta banner"
               class="w-100">
           </figure>
 
@@ -1111,8 +1163,9 @@
 
             <p class="section-subtitle">Prendre RDV</p>
 
-            <h2 class="h2 section-title">Par téléphone au : +212 6 52 76 96 57</h2>
-
+            <h2 class="h2 section-title">Soit par téléphone au : +212 6 11 38 11 11</h2>
+            <h2 class="h2 section-title">Ou rapidement en ligne :</h2>
+            <a href="https://dr-k-khamlich-clinique-dentaire-arribat-rabat-agdal.reservio.com/" target="_blank" rel="noopener noreferrer" class="btn">Prise de RDV </a>
             
 <!-- 
             <a href="#footer" class="btn">Contact</a>
@@ -1225,7 +1278,7 @@
           </li>
 
           <li>
-            <a href="#" class="footer-link">
+            <a href="#service" class="footer-link">
               <ion-icon name="add-outline"></ion-icon>
 
               <span class="span">Services</span>
@@ -1234,7 +1287,7 @@
 
 
           <li>
-            <a href="#" class="footer-link">
+            <a href="#transformation" class="footer-link">
               <ion-icon name="add-outline"></ion-icon>
 
               <span class="span">Nos Avant-Après</span>
@@ -1242,10 +1295,18 @@
           </li>
 
           <li>
-            <a href="#" class="footer-link">
+            <a href="#about" class="footer-link">
               <ion-icon name="add-outline"></ion-icon>
 
               <span class="span">Informations</span>
+            </a>
+          </li>
+	  
+ 	  <li>
+            <a href="https://maps.app.goo.gl/4cmf9kTKiSnMNAq38" target="_blank" rel="noopener noreferrer" class="footer-link">
+              <ion-icon name="add-outline"></ion-icon>
+
+              <span class="span">Nos avis clients Google</span>
             </a>
           </li>
 
@@ -1366,7 +1427,7 @@
               <ion-icon name="call-outline"></ion-icon>
             </div>
 
-            <a href="tel:+212652769657" class="footer-link">+212 6 52 76 96 57</a>
+            <a href="tel:+212611381111" class="footer-link">+212 6 11 38 11 11</a>
           </li>
 
           <li class="footer-item">
@@ -1374,7 +1435,7 @@
               <ion-icon name="mail-outline"></ion-icon>
             </div>
 
-            <a href="mailto:khadkhamlich001@hotmail.com" class="footer-link">khadkhamlich001@hotmail.com</a>
+            <a href="mailto:khamlich.khadouj@gmail.com" class="footer-link">khamlich.khadouj@gmail.com</a>
           </li>
 
         </ul>
@@ -1392,7 +1453,7 @@
         <ul class="social-list">
 
           <li>
-            <a href="tel:+212652769657" class="social-link">
+            <a href="tel:+212611381111" class="social-link">
               <ion-icon name="logo-whatsapp"></ion-icon>
             </a>
           </li>
@@ -1404,7 +1465,7 @@
           </li>-->
           
           <li>
-            <a href="https://www.instagram.com/dr_khadoujkhamlich/" class="social-link" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/dr_khamlich/" class="social-link" target="_blank" rel="noopener noreferrer">
                 <ion-icon name="logo-instagram"></ion-icon>
             </a>
           </li>
