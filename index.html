@@ -37,7 +37,7 @@
     top: 100%;               /* position verticale (centre par défaut) */
     left: 100%;             /* juste après l’image */
     transform: translate(-30%, 600%); /* ajustement fin */
-    font-size: 3rem;
+    font-size: 2rem;
     color: #333;
     z-index: 10;
     pointer-events: none;
@@ -48,8 +48,8 @@
     .swipe-arrow {
       top: 45%;            /* légèrement plus haut */
       left: 100%;
-      transform: translate(-10%, 500%);
-      font-size: 3rem;
+      transform: translate(-10%, 600%);
+      font-size: 2.5rem;
     }
   }
 </style>
@@ -187,11 +187,12 @@
             </p> 
 
 	<a href="https://dr-k-khamlich-clinique-dentaire-arribat-rabat-agdal.reservio.com/" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 16px;">Prendre RDV en ligne en 2 clics</a>
-
+	
+	<a href="tel:+212611381111" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 16px;">Nous appeler au 06 11 38 11 11</a>
 
           </div>
 
-          <figure class="hero-banner"style="margin-top: 50px;">
+          <figure class="hero-banner"style="margin-top: -150px;">
             <img src="./assets/images/hero-banner.png" width="587" height="839" alt="hero banner" class="w-100">
           </figure>
 
@@ -1163,7 +1164,8 @@
 
             <p class="section-subtitle">Prendre RDV</p>
 
-            <h2 class="h2 section-title">Soit par téléphone au : +212 6 11 38 11 11</h2>
+            <h2 class="h2 section-title">Soit par téléphone :</h2>
+            <a href="tel:+212611381111" class="btn">06 11 38 11 11 </a>
             <h2 class="h2 section-title">Ou rapidement en ligne :</h2>
             <a href="https://dr-k-khamlich-clinique-dentaire-arribat-rabat-agdal.reservio.com/" target="_blank" rel="noopener noreferrer" class="btn">Prise de RDV </a>
             
@@ -1319,15 +1321,15 @@
           </li>
 
           <li>
-            <a href="#" class="footer-link">
+            <a class="footer-link">
               <ion-icon name="add-outline"></ion-icon>
 
-              <span class="span">Prothèses</span>
+              <span class="span">Prothèses (bridges, couronnes ...)</span>
             </a>
           </li>
 
           <li>
-            <a href="#" class="footer-link">
+            <a class="footer-link">
               <ion-icon name="add-outline"></ion-icon>
 
               <span class="span">Chirurgie</span>
@@ -1335,15 +1337,15 @@
           </li>
 
           <li>
-            <a href="#" class="footer-link">
+            <a class="footer-link">
               <ion-icon name="add-outline"></ion-icon>
 
-              <span class="span">Orthodontie</span>
+              <span class="span">Orthodontie (Bagues et gouttières)</span>
             </a>
           </li>
 
           <li>
-            <a href="#" class="footer-link">
+            <a class="footer-link">
               <ion-icon name="add-outline"></ion-icon>
 
               <span class="span">Implantologie</span>
@@ -1351,39 +1353,47 @@
           </li>
 
           <li>
-            <a href="#" class="footer-link">
+            <a class="footer-link">
               <ion-icon name="add-outline"></ion-icon>
 
               <span class="span">Esthétique</span>
             </a>
           </li>
-
+          
           <li>
-            <a href="#" class="footer-link">
+            <a class="footer-link">
               <ion-icon name="add-outline"></ion-icon>
 
-              <span class="span">Soins divers</span>
+              <span class="span">Blanchiment en une heure</span>
             </a>
           </li>
 
           <li>
-            <a href="#" class="footer-link">
+            <a class="footer-link">
+              <ion-icon name="add-outline"></ion-icon>
+
+              <span class="span">Soins divers (Caries, Abcès, traitements ...)</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="footer-link">
               <ion-icon name="add-outline"></ion-icon>
 
               <span class="span">Sédation consciente</span>
             </a>
           </li>
           
-          <li>
-            <a href="#" class="footer-link">
+          <!--<li>
+            <a class="footer-link">
               <ion-icon name="add-outline"></ion-icon>
 
               <span class="span">Dentisterie digitale</span>
             </a>
-          </li>
+          </li>-->
           
           <li>
-            <a href="#" class="footer-link">
+            <a class="footer-link">
               <ion-icon name="add-outline"></ion-icon>
 
               <span class="span">Parodontie</span>
@@ -1413,14 +1423,6 @@
           
           <li class="footer-item">
             <div class="item-icon">
-              <ion-icon name="Calendar"></ion-icon>
-            </div>
-
-            <a href="https://dr-k-khamlich-clinique-dentaire-arribat-rabat-agdal.reservio.com/" class="footer-link" target="_blank" rel="noopener noreferrer">Prendre rendez-vous</a>
-          </li>          
-          
-          <li class="footer-item">
-            <div class="item-icon">
               <ion-icon name="location-outline"></ion-icon>
             </div>
 
@@ -1428,7 +1430,15 @@
               2 Rue Oued Souss,<br>
               Agdal Rabat, Maroc            
             </a>
-          </li>          
+          </li>
+          
+          <li class="footer-item">
+            <div class="item-icon">
+              <ion-icon name="calendar"></ion-icon>
+            </div>
+
+            <a href="https://dr-k-khamlich-clinique-dentaire-arribat-rabat-agdal.reservio.com/" target="_blank" rel="noopener noreferrer" class="footer-link">Prendre Rendez-vous en 2 clics</a>
+          </li>
 
           <li class="footer-item">
             <div class="item-icon">
@@ -1448,12 +1458,11 @@
           
           <li class="footer-item">
             <div class="item-icon">
-              <ion-icon name="logo-google"></ion-icon>
+              <ion-icon name="logo-instagram"></ion-icon>
             </div>
 
-            <a href="https://maps.app.goo.gl/4cmf9kTKiSnMNAq38" class="footer-link" target="_blank" rel="noopener noreferrer">Nos avis Google</a>
+            <a href="https://www.instagram.com/dr_khamlich/" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram : Dr_Khamlich</a>
           </li>
-          
 
         </ul>
 
@@ -1464,7 +1473,7 @@
       <div class="container">
 
         <p class="copyright">
-          &copy; 2024 All Rights Reserved by Dr Khamlich. 
+          &copy; 2025 All Rights Reserved by Dr Khamlich. 
         </p>
 
         <ul class="social-list">
