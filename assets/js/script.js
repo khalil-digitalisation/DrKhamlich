@@ -76,3 +76,77 @@ faqQuestions.forEach(function (question) {
     answer?.classList.toggle('open', !isOpen);
   });
 });
+
+
+/**
+ * Comparatif orthodontie : carte d'entrée du carrousel
+ *
+ * Les 6 solutions défilent horizontalement. On ouvre sur la 3ᵉ carte
+ * (céramique, l'offre phare) plutôt que sur la 1ʳᵉ : elle reste à sa place
+ * dans l'ordre de lecture, mais devient ce que le visiteur voit en premier,
+ * avec un bout des cartes voisines de part et d'autre — ce qui rend le
+ * défilement évident sans avoir à le lire.
+ *
+ * S'applique à toutes les largeurs : sur desktop les cartes sont en
+ * 3 colonnes mais la liste déborde toujours (6 cartes), la céramique doit
+ * donc y être mise en avant de la même façon.
+ */
+const compareList = document.querySelector('.compare-list');
+
+// Dernière position posée par le script : sert à distinguer nos propres
+// écritures de scrollLeft d'un vrai défilement du visiteur.
+let lastAppliedScrollLeft = -1;
+
+const centerFeaturedCompareCard = function () {
+  if (!compareList) return;
+
+  // Rien à positionner s'il n'y a pas de débordement.
+  if (compareList.scrollWidth <= compareList.clientWidth) return;
+
+  const featured = compareList.children[2]; // 3ᵉ carte : céramique
+  if (!featured) return;
+
+  // Centre la carte dans la zone visible, sans animation ni scroll de page :
+  // on écrit scrollLeft directement au lieu d'utiliser scrollIntoView, qui
+  // ferait aussi remonter/descendre la page vers la section.
+  //
+  // getBoundingClientRect() plutôt que offsetLeft : offsetLeft se mesure
+  // depuis le premier ancêtre positionné, pas depuis le conteneur défilant.
+  const listRect = compareList.getBoundingClientRect();
+  const cardRect = featured.getBoundingClientRect();
+
+  // Position de la carte dans le contenu défilé, puis on retire la moitié
+  // de l'espace restant pour la centrer.
+  const cardStart = (cardRect.left - listRect.left) + compareList.scrollLeft;
+  const offset = cardStart - (compareList.clientWidth - cardRect.width) / 2;
+
+  compareList.scrollLeft = Math.max(0, offset);
+  lastAppliedScrollLeft = compareList.scrollLeft;
+};
+
+if (compareList) {
+  centerFeaturedCompareCard();
+
+  // Le calcul dépend de la largeur réelle des cartes : on le rejoue une fois
+  // les images chargées. Mais si le visiteur a déjà fait défiler entre-temps,
+  // on ne touche plus à rien — sa position prime sur la nôtre.
+  let userHasScrolled = false;
+  compareList.addEventListener('scroll', function () {
+    if (compareList.scrollLeft !== lastAppliedScrollLeft) userHasScrolled = true;
+  }, { passive: true });
+
+  window.addEventListener('load', function () {
+    if (!userHasScrolled) centerFeaturedCompareCard();
+  });
+
+  // Redimensionnement / rotation : la largeur des cartes change, donc la
+  // position de la carte phare aussi. On recentre tant que le visiteur n'a
+  // rien fait défiler lui-même.
+  let resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      if (!userHasScrolled) centerFeaturedCompareCard();
+    }, 150);
+  });
+}
