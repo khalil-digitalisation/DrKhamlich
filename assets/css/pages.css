@@ -1146,7 +1146,9 @@
   gap: 6px;
   font-size: var(--fs-6);
   color: var(--clr-text-light);
-  margin-top: auto;
+  /* align-content: start pour que la liste reste collée au trait des specs :
+     l'espace restant des cartes courtes tombe en bas, pas au-dessus */
+  align-content: start;
 }
 
 .compare-for li {
