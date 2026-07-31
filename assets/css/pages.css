@@ -527,8 +527,11 @@
 }
 
 .hero-convert .h1 .hero-highlight {
-  display: inline;
+  display: inline-block;
+  margin-top: 4px;
   color: var(--clr-primary-dark);
+  font-size: 0.62em;
+  font-weight: var(--fw-600);
 }
 
 .hero-convert .page-hero-text { color: var(--clr-text-light); }

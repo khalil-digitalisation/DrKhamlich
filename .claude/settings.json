@@ -16,7 +16,8 @@
       "PowerShell(Remove-Item \"c:\\\\Users\\\\asus\\\\Desktop\\\\business\\\\BD\\\\DrKhamlich\\\\__probe.html\" -Force -EA SilentlyContinue; Stop-Process -Id 20104 -Force -EA SilentlyContinue; Get-Process python -EA SilentlyContinue | Where-Object { $_.Id -eq 20104 } | ForEach-Object { \"still running\" }; \"cleanup done\"; git -C \"c:\\\\Users\\\\asus\\\\Desktop\\\\business\\\\BD\\\\DrKhamlich\" status --short)",
       "Bash(mv \"./bagues_metal.png\" \"./assets/images/bagues-metal.png\")",
       "Bash(mv \"./bagues_céramique.png\" \"./assets/images/bagues-ceramique.png\")",
-      "Bash(mv \"./invisalign.png\" \"./assets/images/invisalign.png\")"
+      "Bash(mv \"./invisalign.png\" \"./assets/images/invisalign.png\")",
+      "Bash(python -c ' *)"
     ]
   }
 }
