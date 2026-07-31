@@ -1139,9 +1139,29 @@
 }
 
 .compare-for {
+  display: grid;
+  gap: 6px;
   font-size: var(--fs-6);
   color: var(--clr-text-light);
   margin-top: auto;
+}
+
+.compare-for li {
+  position: relative;
+  padding-left: 16px;
+  line-height: 1.5;
+}
+
+/* Puce dessinée en CSS : même repère visuel que les cartes tarifs */
+.compare-for li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--clr-primary);
 }
 
 .compare-for strong { color: var(--clr-text); }
