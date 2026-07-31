@@ -17,7 +17,10 @@
       "Bash(mv \"./bagues_metal.png\" \"./assets/images/bagues-metal.png\")",
       "Bash(mv \"./bagues_céramique.png\" \"./assets/images/bagues-ceramique.png\")",
       "Bash(mv \"./invisalign.png\" \"./assets/images/invisalign.png\")",
-      "Bash(python -c ' *)"
+      "Bash(python -c ' *)",
+      "Bash(awk 'NR>=860 && NR<=880 {print NR\": \"$0}' facettes-hollywood-smile.html)",
+      "Bash(awk 'NR>=1293 && NR<=1298 {print NR\": \"$0}' facettes-hollywood-smile.html)",
+      "Bash(python -)"
     ]
   }
 }
