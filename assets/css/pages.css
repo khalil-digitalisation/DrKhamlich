@@ -1,0 +1,907 @@
+/*-----------------------------------*\
+  #pages.css — Dr Khamlich
+  Styles spécifiques aux pages dédiées Google Ads
+  (breadcrumb, hero landing, tarifs, FAQ, contenu SEO)
+  ⚠️ MOBILE FIRST — media queries en min-width UNIQUEMENT.
+\*-----------------------------------*/
+
+
+/*-----------------------------------*\
+  #BREADCRUMB
+\*-----------------------------------*/
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-7);
+  color: var(--clr-text-light);
+  margin-bottom: 16px;
+}
+
+.breadcrumb li { display: flex; align-items: center; gap: 6px; }
+
+.breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--clr-primary);
+  transition: var(--transition);
+}
+
+.breadcrumb a:is(:hover, :focus-visible) { color: var(--clr-primary-dark); }
+
+.breadcrumb-separator { color: var(--clr-border); }
+
+.breadcrumb [aria-current="page"] { color: var(--clr-text-light); }
+
+
+/*-----------------------------------*\
+  #HERO PAGE DÉDIÉE
+\*-----------------------------------*/
+
+.page-hero {
+  position: relative;
+  background-color: var(--clr-text);
+  background-size: cover;
+  background-position: center;
+  color: var(--clr-white);
+  padding: 32px 0 40px;
+  isolation: isolate;
+}
+
+/* Overlay gradient léger sur l'image de fond */
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(15, 32, 51, 0.92) 0%, rgba(2, 132, 168, 0.82) 100%);
+  z-index: -1;
+}
+
+.page-hero .breadcrumb { color: rgba(255, 255, 255, 0.75); }
+.page-hero .breadcrumb a { color: var(--clr-white); text-decoration: underline; }
+.page-hero .breadcrumb [aria-current="page"] { color: rgba(255, 255, 255, 0.75); }
+.page-hero .breadcrumb-separator { color: rgba(255, 255, 255, 0.4); }
+
+.page-hero .h1 {
+  color: var(--clr-white);
+  margin-bottom: 12px;
+}
+
+.page-hero-text {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: var(--fs-5);
+  margin-bottom: 20px;
+}
+
+.page-hero .trust-badge {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--clr-white);
+  backdrop-filter: blur(4px);
+}
+
+.page-hero .trust-badge ion-icon { color: #6ee7b7; }
+
+.page-hero .btn-secondary {
+  background: transparent;
+  color: var(--clr-white);
+  border-color: var(--clr-white);
+}
+
+.page-hero .btn-secondary:is(:hover, :focus-visible) {
+  background: var(--clr-white);
+  color: var(--clr-primary-dark);
+}
+
+
+/*-----------------------------------*\
+  #CONTENU SEO
+\*-----------------------------------*/
+
+.content-body p {
+  color: var(--clr-text-light);
+  margin-bottom: 16px;
+}
+
+.content-body strong { color: var(--clr-text); font-weight: var(--fw-500); }
+
+.content-body .h3 { margin: 28px 0 12px; }
+
+.check-list { display: grid; gap: 12px; margin-bottom: 24px; }
+
+.check-list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: var(--clr-text-light);
+  font-size: var(--fs-6);
+}
+
+.check-list ion-icon {
+  color: var(--clr-success);
+  font-size: 2rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.check-list strong { color: var(--clr-text); font-weight: var(--fw-600); }
+
+/* Étapes numérotées du déroulement */
+.steps-list {
+  display: grid;
+  gap: 16px;
+  counter-reset: step;
+  margin-bottom: 24px;
+}
+
+.steps-list li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  counter-increment: step;
+}
+
+.steps-list li::before {
+  content: counter(step);
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-image: var(--gradient);
+  color: var(--clr-white);
+  display: grid;
+  place-items: center;
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-700);
+  font-size: var(--fs-6);
+}
+
+.steps-list .step-title {
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-600);
+  font-size: var(--fs-6);
+  color: var(--clr-text);
+}
+
+.steps-list .step-text {
+  color: var(--clr-text-light);
+  font-size: var(--fs-6);
+}
+
+/* Encadré "Pourquoi choisir le Dr Khamlich ?" */
+.highlight-box {
+  background: var(--clr-accent);
+  border-left: 4px solid var(--clr-primary);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  margin-top: 28px;
+}
+
+.highlight-box .h3 { margin: 0 0 16px; }
+
+.highlight-box .check-list { margin-bottom: 0; }
+
+
+/*-----------------------------------*\
+  #TARIFS
+\*-----------------------------------*/
+
+/* Cartes empilées sur mobile — jamais de tableau à scroll horizontal */
+.price-list {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.price-card {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.price-card:is(:hover, :focus-within) {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.price-card .card-icon {
+  width: 72px;
+  margin-bottom: 16px;
+}
+
+.price-card-featured {
+  border-color: var(--clr-primary);
+  border-width: 2px;
+  box-shadow: var(--shadow);
+}
+
+.price-badge {
+  position: absolute;
+  top: -12px;
+  left: 24px;
+  background-image: var(--gradient);
+  color: var(--clr-white);
+  font-family: var(--ff-heading);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-600);
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+}
+
+.price-card .price-title {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-600);
+  margin-bottom: 8px;
+}
+
+.price-amount {
+  font-family: var(--ff-heading);
+  font-size: 2.8rem;
+  font-weight: var(--fw-800);
+  color: var(--clr-primary);
+  line-height: 1.2;
+}
+
+.price-unit {
+  color: var(--clr-text-light);
+  font-size: var(--fs-7);
+  margin-bottom: 12px;
+}
+
+.price-desc {
+  color: var(--clr-text-light);
+  font-size: var(--fs-6);
+  flex-grow: 1;
+}
+
+.price-note {
+  background: var(--clr-surface);
+  border: 1px dashed var(--clr-border);
+  border-radius: var(--border-radius);
+  padding: 16px;
+  color: var(--clr-text-light);
+  font-size: var(--fs-6);
+  margin-bottom: 24px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.price-note ion-icon {
+  color: var(--clr-primary);
+  font-size: 2rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Grille secondaire compacte : soins sans tarif fixe ni page dédiée */
+.service-list-compact {
+  grid-template-columns: 1fr;
+  gap: 16px;
+  /* Évite que la dernière carte touche le groupe de boutons CTA */
+  margin-bottom: 40px;
+}
+
+/* Cartes de largeur et hauteur égales : le <li> est un conteneur flex en
+   ligne par défaut, donc sans flex:1 la carte ne prend que la largeur de
+   son contenu (ex. "Chirurgie dentaire" plus courte que les autres). */
+.service-list-compact > li { display: flex; }
+
+.service-card-compact { flex: 1; height: 100%; }
+
+.service-card-compact {
+  padding: 18px;
+}
+
+.service-card-compact .card-icon {
+  width: 48px;
+  margin-bottom: 10px;
+}
+
+.service-card-compact .card-title {
+  margin-bottom: 8px;
+}
+
+.service-card-compact .card-text {
+  font-size: var(--fs-7);
+  margin-bottom: 8px;
+}
+
+.service-card-compact .card-link {
+  min-height: auto;
+  font-size: var(--fs-7);
+}
+
+@media (min-width: 768px) {
+  .service-list-compact { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .service-list-compact { grid-template-columns: repeat(3, 1fr); }
+}
+
+
+/*-----------------------------------*\
+  #FAQ ACCORDÉON
+\*-----------------------------------*/
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+.faq-item {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.faq-item:has(.faq-question[aria-expanded="true"]) {
+  border-color: var(--clr-primary);
+  box-shadow: var(--shadow-card);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  min-height: 56px;
+  text-align: left;
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-600);
+  font-size: var(--fs-6);
+  color: var(--clr-text);
+  transition: var(--transition);
+}
+
+.faq-question:is(:hover, :focus-visible) { color: var(--clr-primary); }
+
+.faq-question ion-icon {
+  font-size: 2.2rem;
+  color: var(--clr-primary);
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.faq-question[aria-expanded="true"] ion-icon { transform: rotate(180deg); }
+
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.faq-answer.open { grid-template-rows: 1fr; }
+
+.faq-answer > div { overflow: hidden; }
+
+.faq-answer p {
+  padding: 0 20px 16px;
+  color: var(--clr-text-light);
+  font-size: var(--fs-6);
+}
+
+
+/*-----------------------------------*\
+  #GALERIE AVANT-APRÈS (pages dédiées)
+\*-----------------------------------*/
+
+/* 1 colonne stricte sur mobile */
+.gallery-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+.gallery-item {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+}
+
+.gallery-item:is(:hover, :focus-within) {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.gallery-item figcaption {
+  padding: 12px 16px;
+  color: var(--clr-text-light);
+  font-size: var(--fs-7);
+}
+
+
+/*-----------------------------------*\
+  #TABLETTE — min-width: 768px
+\*-----------------------------------*/
+
+@media (min-width: 768px) {
+
+  .page-hero { padding: 48px 0 56px; }
+
+  .price-list { grid-template-columns: repeat(2, 1fr); }
+
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .faq-question { font-size: var(--fs-5); padding: 18px 24px; }
+
+}
+
+
+/*-----------------------------------*\
+  #DESKTOP — min-width: 1024px
+\*-----------------------------------*/
+
+@media (min-width: 1024px) {
+
+  .page-hero { padding: 64px 0 72px; }
+
+  .page-hero .container { max-width: 860px; }
+
+  .page-hero-text { font-size: var(--fs-4); }
+
+  .price-list { grid-template-columns: repeat(3, 1fr); }
+
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+
+  /* Contenu SEO + encadré côte à côte */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .highlight-box { margin-top: 0; position: sticky; top: 100px; }
+
+}
+
+
+/*-----------------------------------*\
+  #HIÉRARCHIE DES TITRES DE SECTION
+\*-----------------------------------*/
+
+/* La ligne d'accroche (.section-subtitle) était plus petite que le titre
+   placé en dessous, ce qui inversait la hiérarchie visuelle : elle devient
+   la ligne dominante, et le titre passe en sous-titre plus discret.
+   Ces règles ne s'appliquent qu'à index.html (seule page liant pages.css). */
+.section-head .section-subtitle {
+  font-size: var(--fs-2);
+  font-weight: var(--fw-700);
+  color: var(--clr-text);
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+.section-head .section-title {
+  font-size: var(--fs-4);
+  font-weight: var(--fw-600);
+  color: var(--clr-primary);
+}
+
+/* Le bandeau CTA sombre garde un contraste lisible */
+.cta .section-head .section-subtitle { color: var(--clr-white); }
+.cta .section-head .section-title { color: rgba(255, 255, 255, 0.85); }
+
+
+/*-----------------------------------*\
+  #HERO CONVERSION (pages Google Ads)
+  Bloc additif : n'altère aucune règle utilisée par index.html.
+\*-----------------------------------*/
+
+/* Variante claire du hero, pensée pour la conversion : offre visible,
+   preuve sociale au-dessus de la ligne de flottaison, CTA doublé.
+   Même fond que le hero de la page d'accueil (var(--gradient-hero)),
+   pas le fond sombre de .page-hero utilisé sur les autres pages. */
+.hero-convert {
+  background: var(--gradient-hero);
+  padding: 24px 0 32px;
+}
+
+.hero-convert .h1 {
+  color: var(--clr-text);
+  font-size: 3rem;
+  line-height: 1.2;
+}
+
+.hero-convert .h1 .hero-highlight {
+  display: inline;
+  color: var(--clr-primary-dark);
+}
+
+.hero-convert .page-hero-text { color: var(--clr-text-light); }
+
+/* Pastille d'offre — l'argument à plus forte valeur perçue */
+.hero-offer-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--clr-gold);
+  color: #422006;
+  font-size: var(--fs-7);
+  font-weight: var(--fw-700);
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+
+.hero-offer-pill ion-icon { font-size: 1.8rem; flex-shrink: 0; }
+
+/* Preuve sociale compacte, juste sous le H1 */
+.hero-proof {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: var(--fs-7);
+  color: var(--clr-text-light);
+}
+
+.hero-proof .stars {
+  color: var(--clr-gold);
+  font-size: var(--fs-5);
+  letter-spacing: 1px;
+}
+
+.hero-proof-score { color: var(--clr-text); }
+
+/* Étoiles + note restent solidaires sur une même ligne, quelle que soit la largeur */
+.hero-proof .stars,
+.hero-proof-score { white-space: nowrap; }
+.hero-proof-score { font-weight: var(--fw-700); }
+.hero-proof-sep { opacity: 0.5; }
+
+/* Emplacement image hero (photo sourire / cabinet) — même traitement que
+   .hero-banner sur la page d'accueil : pas de cadre, pas d'ombre. */
+.hero-media { margin-bottom: 20px; }
+
+.hero-media img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+}
+
+/* Récapitulatif prix/durée directement dans le hero */
+.hero-facts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.hero-fact {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.hero-fact .fact-value {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-700);
+  color: var(--clr-primary-dark);
+  line-height: 1.2;
+}
+
+.hero-fact .fact-label {
+  font-size: 1.25rem;
+  color: var(--clr-text-light);
+  line-height: 1.3;
+}
+
+/* Micro-réassurance sous les boutons — réduit le risque perçu.
+   Masquée sur mobile comme les boutons du hero : la barre CTA fixe du bas
+   prend le relais. Réapparaît dès la tablette (voir media query 768px). */
+.hero-microcopy {
+  display: none;
+  margin-top: 12px;
+  font-size: var(--fs-7);
+  color: var(--clr-text-light);
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-microcopy ion-icon { color: var(--clr-primary); font-size: 1.7rem; }
+
+
+/*-----------------------------------*\
+  #BANDEAU DE CONFIANCE
+\*-----------------------------------*/
+
+.trust-strip {
+  background: var(--clr-text);
+  padding: 16px 0;
+}
+
+.trust-strip ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.trust-strip li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.3rem;
+  line-height: 1.35;
+}
+
+.trust-strip ion-icon {
+  color: #6ee7b7;
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+
+/*-----------------------------------*\
+  #PRÉSENTATION ORIENTÉE BÉNÉFICE
+\*-----------------------------------*/
+
+/* Cartes "avant / après" version texte : douleur → résultat */
+.outcome-grid {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.outcome-card {
+  border-radius: var(--border-radius);
+  padding: 20px;
+  border: 1px solid var(--clr-border);
+}
+
+.outcome-card.is-before {
+  background: var(--clr-surface);
+}
+
+.outcome-card.is-after {
+  background: var(--clr-primary-light);
+  border-color: var(--clr-primary);
+}
+
+.outcome-card .outcome-label {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-700);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  color: var(--clr-text-light);
+}
+
+.outcome-card.is-after .outcome-label { color: var(--clr-primary-dark); }
+
+.outcome-card ul { display: grid; gap: 10px; }
+
+.outcome-card li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: var(--fs-6);
+  color: var(--clr-text-light);
+}
+
+.outcome-card li ion-icon { font-size: 1.9rem; flex-shrink: 0; margin-top: 2px; }
+
+.outcome-card.is-before li ion-icon { color: #94a3b8; }
+.outcome-card.is-after li ion-icon { color: var(--clr-success); }
+
+/* Bloc image libre à insérer dans le contenu */
+.content-figure {
+  margin: 24px 0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--clr-border);
+}
+
+.content-figure img { width: 100%; display: block; }
+
+.content-figure figcaption {
+  padding: 10px 14px;
+  font-size: var(--fs-7);
+  color: var(--clr-text-light);
+  background: var(--clr-surface);
+}
+
+
+/*-----------------------------------*\
+  #GARANTIES / LEVÉE D'OBJECTIONS
+\*-----------------------------------*/
+
+.guarantee-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.guarantee-card {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-left: 4px solid var(--clr-primary);
+  border-radius: var(--border-radius);
+  padding: 18px 18px 18px 16px;
+  box-shadow: var(--shadow-card);
+}
+
+.guarantee-card .guarantee-icon {
+  font-size: 2.6rem;
+  color: var(--clr-primary);
+  margin-bottom: 8px;
+}
+
+.guarantee-card .guarantee-title {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-5);
+  font-weight: var(--fw-600);
+  margin-bottom: 6px;
+}
+
+.guarantee-card p {
+  font-size: var(--fs-6);
+  color: var(--clr-text-light);
+}
+
+
+/*-----------------------------------*\
+  #DÉROULÉ DE LA SÉANCE (timeline)
+\*-----------------------------------*/
+
+.timeline-note {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: var(--clr-primary-light);
+  border-radius: var(--border-radius);
+  padding: 14px 16px;
+  font-size: var(--fs-6);
+  color: var(--clr-text);
+  margin-top: 20px;
+}
+
+.timeline-note ion-icon {
+  color: var(--clr-primary-dark);
+  font-size: 2.1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+
+/*-----------------------------------*\
+  #BLOC RDV EXTERNE (Reservio nouvel onglet)
+\*-----------------------------------*/
+
+.rdv-panel {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 24px 20px;
+  text-align: center;
+}
+
+.rdv-panel .rdv-price {
+  font-family: var(--ff-heading);
+  font-size: 2.8rem;
+  font-weight: var(--fw-800);
+  color: var(--clr-primary);
+  line-height: 1.2;
+}
+
+.rdv-panel .rdv-price-sub {
+  font-size: var(--fs-6);
+  color: var(--clr-text-light);
+  margin-bottom: 18px;
+}
+
+.rdv-panel .btn-group { justify-content: center; }
+
+.rdv-steps {
+  display: grid;
+  gap: 10px;
+  margin: 20px auto 0;
+  max-width: 420px;
+  text-align: left;
+}
+
+.rdv-steps li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: var(--fs-6);
+  color: var(--clr-text-light);
+}
+
+.rdv-steps ion-icon {
+  color: var(--clr-success);
+  font-size: 2rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+
+/*-----------------------------------*\
+  #TABLETTE — min-width: 768px (bloc additif)
+\*-----------------------------------*/
+
+@media (min-width: 768px) {
+
+  .hero-convert { padding: 40px 0 48px; }
+  .hero-convert .h1 { font-size: 3.8rem; }
+
+  /* Plus de barre CTA fixe à partir d'ici : la réassurance du hero revient */
+  .hero-microcopy { display: flex; }
+
+  .hero-facts { grid-template-columns: repeat(4, 1fr); }
+
+  .trust-strip ul { grid-template-columns: repeat(4, 1fr); }
+
+  .outcome-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .guarantee-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .rdv-panel { padding: 32px; }
+
+}
+
+
+/*-----------------------------------*\
+  #DESKTOP — min-width: 1024px (bloc additif)
+\*-----------------------------------*/
+
+@media (min-width: 1024px) {
+
+  .hero-convert { padding: 56px 0 64px; }
+  .hero-convert .h1 { font-size: 4.4rem; }
+
+  /* Deux colonnes : texte à gauche, visuel à droite */
+  .hero-convert .container {
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .hero-convert .hero-convert-body { grid-column: 1; }
+
+  .hero-media {
+    grid-column: 2;
+    margin-bottom: 0;
+    align-self: stretch;
+  }
+
+  .hero-media img { height: 100%; min-height: 420px; }
+
+  .guarantee-grid { grid-template-columns: repeat(3, 1fr); }
+
+}
