@@ -993,6 +993,23 @@
   color: var(--clr-text-light);
 }
 
+/* Variante « symptômes » (facettes) : les 3 colonnes ne sont pas une
+   progression mais 3 cas traités à égalité. Le rail devient uni, les
+   pastilles prennent la couleur d'accent, et la légende est une phrase
+   centrée plutôt que deux étiquettes opposées. */
+.visibility-scale.is-symptoms .visibility-track::before {
+  background: var(--clr-primary-light);
+}
+
+.visibility-scale.is-symptoms .visibility-step { color: var(--clr-text); }
+
+.visibility-scale.is-symptoms .visibility-step .dot { background: var(--clr-primary); }
+
+.visibility-scale.is-symptoms .visibility-legend {
+  justify-content: center;
+  text-align: center;
+}
+
 /* Marge supplémentaire : les badges des cartes débordent vers le haut */
 .compare-list { padding-top: 14px; }
 
