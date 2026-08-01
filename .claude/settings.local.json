@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Add-Type -AssemblyName System.Drawing; foreach \\($f in @\\('1_bis.png','2_bis.png','3_bis.png'\\)\\) { $i=[System.Drawing.Image]::FromFile\\(\"c:\\\\Users\\\\asus\\\\Desktop\\\\business\\\\BD\\\\DrKhamlich\\\\$f\"\\); \"$f : $\\($i.Width\\)x$\\($i.Height\\)\"; $i.Dispose\\(\\) })",
+      "Bash(python -m http.server 8777)",
+      "Bash(curl -s -o /dev/null -w \"server:%{http_code}\\\\n\" http://localhost:8777/facettes-hollywood-smile.html)"
+    ]
+  }
+}

@@ -885,7 +885,7 @@
 
   .hero-convert { padding: 56px 0 64px; }
   .hero-convert .h1 { font-size: 4.4rem; }
-  .compare-list .scrollbar-item { min-width: calc((100% - 32px) / 3); }
+  /* .compare-list passe en grille 3 colonnes dès 768px (voir plus bas) */
   .decision-list { grid-template-columns: repeat(3, 1fr); }
 
   /* Deux colonnes : texte à gauche, visuel à droite */
@@ -1106,6 +1106,17 @@
   display: block;
 }
 
+/* Variante photo : cadrage identique sur les 3 cartes pour comparer d'un coup d'œil */
+.compare-visual.is-photo {
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+}
+
+.compare-visual.is-photo img {
+  max-height: none;
+  object-fit: cover;
+}
+
 .compare-card .compare-title {
   font-size: var(--fs-4);
   margin-bottom: 6px;
@@ -1256,6 +1267,80 @@
 
 
 /*-----------------------------------*\
+  #SÉLECTEUR DE CAS (onglets du comparatif)
+  Le visiteur choisit d'abord SA situation ; on ne lui montre ensuite que
+  les solutions qui la concernent. Réduit le sacrifice perçu : il n'a pas
+  à trier lui-même 10 prestations dont 7 ne le concernent pas.
+  Utilisé par la page prothèses.
+\*-----------------------------------*/
+
+.case-switch {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 4px 0 12px;
+  margin-bottom: 8px;
+  scroll-snap-type: x proximity;
+}
+
+.case-switch::-webkit-scrollbar { display: none; }
+
+.case-tab {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--border-radius);
+  padding: 12px 16px;
+  /* 48px minimum de zone tactile (directive mobile-first du PRD) */
+  min-height: 48px;
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition);
+}
+
+.case-tab .case-tab-label {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-600);
+  color: var(--clr-text);
+  white-space: nowrap;
+}
+
+.case-tab .case-tab-sub {
+  font-size: 1.2rem;
+  color: var(--clr-text-light);
+  white-space: nowrap;
+}
+
+.case-tab[aria-selected="true"] {
+  background: var(--clr-primary);
+  border-color: var(--clr-primary);
+  box-shadow: var(--shadow);
+}
+
+.case-tab[aria-selected="true"] .case-tab-label,
+.case-tab[aria-selected="true"] .case-tab-sub { color: var(--clr-white); }
+
+.case-tab:is(:hover, :focus-visible) { border-color: var(--clr-primary); }
+
+/* Les panneaux non sélectionnés sont retirés du flux ET de l'arbre
+   d'accessibilité via [hidden] — pas seulement masqués visuellement. */
+.case-panel[hidden] { display: none; }
+
+.case-panel-intro {
+  font-size: var(--fs-6);
+  color: var(--clr-text-light);
+  margin-bottom: 4px;
+}
+
+
+/*-----------------------------------*\
   #TABLETTE — min-width: 768px (comparatif)
 \*-----------------------------------*/
 
@@ -1267,11 +1352,53 @@
 
   .visibility-step { font-size: var(--fs-7); }
 
-  /* 2 cartes visibles, le défilement reste possible */
-  .compare-list .scrollbar-item { min-width: calc((100% - 16px) / 2); }
+  /* Les 3 formules doivent se comparer d'un coup d'œil : à partir de la
+     tablette on sort du carrousel pour une grille, sinon la 3ᵉ carte reste
+     hors écran. Le défilement horizontal et le snap n'ont plus lieu d'être. */
+  .compare-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+    overflow-x: visible;
+    scroll-snap-type: none;
+    scroll-padding-inline: 0;
+    /* annule le débord latéral du carrousel mobile (.has-scrollbar) */
+    margin-inline: 0;
+    padding-inline: 0;
+    padding-bottom: 0;
+  }
+
+  .compare-list .scrollbar-item { min-width: 0; }
+
+  /* Le hint de défilement ne concerne plus que le mobile */
+  .compare-hint { display: none; }
 
   .decision-box { padding: 32px; }
 
   .decision-list { grid-template-columns: repeat(2, 1fr); }
+
+  /* Comparatifs à 4 solutions (page prothèses) : 2 colonnes en tablette,
+     sinon les cartes deviennent illisibles. Passage à 4 colonnes en desktop. */
+  .compare-list.is-4up { grid-template-columns: repeat(2, 1fr); }
+
+  /* Les onglets tiennent sur une ligne : plus de défilement horizontal. */
+  .case-switch {
+    overflow-x: visible;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .case-tab { align-items: center; text-align: center; }
+
+}
+
+
+/*-----------------------------------*\
+  #DESKTOP — min-width: 1024px (comparatif)
+\*-----------------------------------*/
+
+@media (min-width: 1024px) {
+
+  .compare-list.is-4up { grid-template-columns: repeat(4, 1fr); }
 
 }
