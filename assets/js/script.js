@@ -90,8 +90,12 @@ faqQuestions.forEach(function (question) {
  * S'applique à toutes les largeurs : sur desktop les cartes sont en
  * 3 colonnes mais la liste déborde toujours (6 cartes), la céramique doit
  * donc y être mise en avant de la même façon.
+ *
+ * Les pages qui pilotent leur comparatif autrement (page prothèses : un
+ * carrousel par situation, chacun devant s'ouvrir sur sa 1ʳᵉ carte) se
+ * retirent de ce comportement via [data-no-autocenter] sur la liste.
  */
-const compareList = document.querySelector('.compare-list');
+const compareList = document.querySelector('.compare-list:not([data-no-autocenter])');
 
 // Dernière position posée par le script : sert à distinguer nos propres
 // écritures de scrollLeft d'un vrai défilement du visiteur.
