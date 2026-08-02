@@ -21,7 +21,10 @@
       "Bash(awk 'NR>=860 && NR<=880 {print NR\": \"$0}' facettes-hollywood-smile.html)",
       "Bash(awk 'NR>=1293 && NR<=1298 {print NR\": \"$0}' facettes-hollywood-smile.html)",
       "Bash(python -)",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(python -c \"import PIL; print\\('Pillow', PIL.__version__\\)\")",
+      "Bash(python \"C:/Users/asus/AppData/Local/Temp/claude/c--Users-asus-Desktop-business-BD-DrKhamlich/17def152-dd84-4cfd-be47-71d5a5a7bfcb/scratchpad/convert_webp.py\")",
+      "Bash(python \"C:/Users/asus/AppData/Local/Temp/claude/c--Users-asus-Desktop-business-BD-DrKhamlich/17def152-dd84-4cfd-be47-71d5a5a7bfcb/scratchpad/update_refs.py\")"
     ]
   }
 }
