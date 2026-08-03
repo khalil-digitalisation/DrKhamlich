@@ -1691,3 +1691,67 @@
   .compare-list.is-4up { grid-template-columns: repeat(4, 1fr); }
 
 }
+
+
+/*-----------------------------------*\
+  #HEADBAR DESKTOP — anti-retour à la ligne
+  Les pages dédiées ont jusqu'à 7 entrées de nav : à 1024-1279px le
+  conteneur (960px) est partagé avec le logo et le CTA, ce qui faisait
+  passer certains libellés sur 2 lignes.
+  ⚠️ min-width uniquement : le menu mobile (colonne, 48px de cible
+  tactile) n'est pas affecté.
+\*-----------------------------------*/
+
+@media (min-width: 1024px) {
+
+  /* Le header ne se met jamais sur 2 lignes */
+  .header-bottom .container { flex-wrap: nowrap; }
+
+  /* Le nav absorbe la contrainte, logo et CTA gardent leur intégrité */
+  .header-bottom .navbar { flex-shrink: 1; min-width: 0; }
+  .header-bottom .logo { flex-shrink: 0; }
+
+  .navbar-list {
+    flex-wrap: nowrap;
+    gap: 0;
+  }
+
+  .navbar-list > li { flex-shrink: 0; }
+
+  /* La règle clé : aucun libellé ne se coupe sur 2 lignes */
+  .navbar-link {
+    white-space: nowrap;
+    padding: 8px 9px;
+  }
+
+  /* Le CTA doublonne l'entrée "Prendre RDV" (masquée en desktop) :
+     on récupère son padding surdimensionné dans la zone contrainte,
+     sans descendre sous les 44px de hauteur de cible. */
+  .header-cta {
+    flex-shrink: 0;
+    padding: 12px 16px;
+    white-space: nowrap;
+  }
+
+}
+
+/* Attention : le conteneur reste à 960px jusqu'à 1280px. Entre 1024 et
+   1279px la largeur disponible ne change donc pas — relâcher la
+   compression ici ferait réapparaître le retour à la ligne. On garde le
+   palier serré sur toute la plage. */
+
+/* À 1280px style.css repasse le nav en 8px/16px + fs-5 (1.6rem). Sur les
+   pages à 6 entrées visibles, le conteneur (1180px) ne l'absorbe pas
+   encore : on maintient le palier intermédiaire jusqu'à 1400px, au-delà
+   duquel la règle d'origine reprend la main sans surcharge de notre part. */
+@media (min-width: 1280px) and (max-width: 1399px) {
+
+  .navbar-link { padding: 8px 12px; font-size: var(--fs-6); }
+
+}
+
+@media (min-width: 1400px) {
+
+  .header-cta { padding: 12px 24px; }
+
+}
