@@ -59,7 +59,7 @@
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
     "name": "Prothèses dentaires — couronnes, bridges et dents fixes à Rabat",
-    "description": "Couronnes céramique, bridges, prothèses amovibles et solutions fixes sur implants (All-on-4, All-on-6) à Rabat Agdal. Tarifs affichés, paiement échelonné.",
+    "description": "Couronnes céramique, bridges, chips céramique, prothèses amovibles et solutions fixes sur implants (All-on-4, All-on-6) à Rabat Agdal. Tarifs affichés, paiement échelonné.",
     "url": "https://drkhamlich.com/protheses-couronnes-bridges.html",
     "inLanguage": "fr",
     "provider": {
@@ -87,7 +87,7 @@
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "serviceType": "Prothèses dentaires — couronnes, bridges et dents fixes sur implants",
+    "serviceType": "Prothèses dentaires — couronnes, bridges, chips céramique et dents fixes sur implants",
     "provider": {
       "@type": "Dentist",
       "name": "Dr KHAMLICH - Clinique Dentaire Arribat"
@@ -111,6 +111,13 @@
       {
         "@type": "Offer",
         "name": "Inlay / Onlay céramique",
+        "price": "4000",
+        "priceCurrency": "MAD",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "@type": "Offer",
+        "name": "Chips céramique — fermeture d'un espace entre les dents, prix par chips",
         "price": "4000",
         "priceCurrency": "MAD",
         "availability": "https://schema.org/InStock"
@@ -226,6 +233,16 @@
         "@type": "Question",
         "name": "Le tarif annoncé peut-il augmenter en cours de traitement ?",
         "acceptedAnswer": { "@type": "Answer", "text": "Le devis remis lors de la consultation à 250 Dhs est ferme pour le traitement décrit. Les tarifs affichés sur cette page sont des tarifs de référence, qui peuvent être ajustés à la hausse comme à la baisse selon la complexité réelle de votre cas — mais cet ajustement est fait avant de commencer, sur le devis, jamais après. Seuls des soins annexes préalables (une carie à traiter, une extraction, une dévitalisation) feraient l'objet d'une ligne distincte, annoncée elle aussi à l'avance." }
+      },
+      {
+        "@type": "Question",
+        "name": "Qu'est-ce que les chips dentaires en céramique ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Un chips est une fine pièce de céramique collée sur le bord d'une dent pour l'élargir de quelques dixièmes de millimètre et refermer l'espace qui la sépare de sa voisine. Pour un espace, on pose un chips sur chacune des deux dents qui le bordent : soit 2 chips à 4 000 Dhs pièce, 8 000 Dhs au total pour un écart entre les deux incisives centrales. Le traitement tient en 2 rendez-vous : empreinte au premier, collage au second. C'est de l'orthodontie instantanée : l'espace est refermé sans bagues et sans attendre des mois. Il faut en revanche que vos dents soient déjà bien alignées — si elles ne le sont pas, un traitement orthodontique reste nécessaire." }
+      },
+      {
+        "@type": "Question",
+        "name": "Chips céramique ou bagues pour refermer un espace entre les dents ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Tout dépend de l'alignement de vos dents. Si elles sont déjà bien positionnées et que seul un espace vous gêne, les chips céramique referment cet espace en 2 séances, pour 8 000 Dhs l'espace : rien à porter, aucun mois d'attente. Si les dents sont mal alignées, chevauchées, ou si l'écart est trop large pour être comblé par de la céramique, l'orthodontie reste la bonne réponse — elle déplace réellement les dents, à partir de 12 500 Dhs par mâchoire, sur 12 à 24 mois. Le Dr Khamlich tranche à la consultation, empreinte 3D à l'appui." }
       },
       {
         "@type": "Question",
@@ -510,10 +527,27 @@
               </span>
             </button>
 
+            <!-- Espaces / diastème : situation purement esthétique, sans dent
+                 abîmée ni dent manquante. Elle n'était couverte nulle part sur
+                 le site alors que c'est la porte d'entrée des chips céramique.
+                 Faute d'illustration dédiée, on utilise un glyphe (teinté en
+                 primaire par le CSS pour ne pas se confondre avec la sortie
+                 neutre « Je ne sais pas »). -->
+            <button class="case-tab" type="button" role="tab" id="case-tab-4"
+                    aria-controls="case-panel-4" aria-selected="false" tabindex="-1">
+              <span class="case-tab-icon is-glyph" aria-hidden="true">
+                <ion-icon name="swap-horizontal-outline"></ion-icon>
+              </span>
+              <span class="case-tab-texts">
+                <span class="case-tab-label">J'ai des espaces entre mes dents</span>
+                <span class="case-tab-sub">dents écartées, diastème</span>
+              </span>
+            </button>
+
             <!-- Sortie de secours : le visiteur qui hésite n'abandonne pas la
                  page, on le renvoie vers le bilan plutôt que vers Google. -->
-            <button class="case-tab is-unsure" type="button" role="tab" id="case-tab-4"
-                    aria-controls="case-panel-4" aria-selected="false" tabindex="-1">
+            <button class="case-tab is-unsure" type="button" role="tab" id="case-tab-5"
+                    aria-controls="case-panel-5" aria-selected="false" tabindex="-1">
               <span class="case-tab-icon is-glyph" aria-hidden="true">
                 <ion-icon name="help-outline"></ion-icon>
               </span>
@@ -911,12 +945,119 @@
           </div>
 
 
-          <!-- ── CAS 4 : « je ne sais pas » ──────────────────────────────
-               Sortie rapide pour le visiteur qui n'arrive pas à se ranger
-               dans une des 3 situations : plutôt que de le laisser repartir,
-               on lui vend le bilan comme LA réponse à son hésitation. -->
+          <!-- ── CAS 4 : espaces entre les dents (diastème) ──────────────
+               3 cartes seulement : .compare-list est déjà en grille 3 colonnes
+               par défaut dès 768px, on ne met donc pas .is-4up ici. -->
           <div class="case-panel" id="case-panel-4" role="tabpanel"
                aria-labelledby="case-tab-4" tabindex="0" hidden>
+
+            <ul class="has-scrollbar compare-list" data-no-autocenter>
+
+              <li class="scrollbar-item">
+                <div class="compare-card is-recommended">
+                  <span class="price-badge">Sans bagues</span>
+                  <figure class="compare-visual">
+                    <img src="./assets/images/protheses/chips-ceramique.webp" width="462" height="331" loading="lazy"
+                      alt="Avant-après : espace entre les deux incisives centrales refermé par des chips en céramique" class="w-100">
+                  </figure>
+                  <h3 class="h3 compare-title">Chips céramique</h3>
+                  <p class="compare-price">4 000 <span>Dhs / chips</span></p>
+                  <p class="compare-price-full">Un espace = 2 chips, soit <strong>8 000 Dhs</strong></p>
+                  <p class="compare-delay"><ion-icon name="time-outline" aria-hidden="true"></ion-icon>2 séances · ~1 semaine</p>
+                  <ul class="compare-specs">
+                    <li><span class="spec-label">Esthétique</span><span class="spec-rate" role="img" aria-label="5 sur 5">●●●●●</span></li>
+                    <li><span class="spec-label">Rapidité</span><span class="spec-rate" role="img" aria-label="5 sur 5">●●●●●</span></li>
+                    <li><span class="spec-label">Dent conservée</span><span class="spec-rate" role="img" aria-label="5 sur 5">●●●●●</span></li>
+                  </ul>
+                  <p class="compare-explain">Une fine pièce de céramique est collée sur le bord de chacune des deux dents qui encadrent l'espace : elles s'élargissent juste ce qu'il faut, et le trou disparaît. Empreinte au 1ᵉʳ rendez-vous, collage au 2ᵉ.</p>
+                  <ul class="compare-for">
+                    <li><strong>L'orthodontie instantanée</strong> : l'espace refermé en 2 séances</li>
+                    <li><strong>Sans bagues</strong>, sans gouttières, sans mois d'attente</li>
+                    <li>Suppose des dents <strong>déjà bien alignées</strong></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="scrollbar-item">
+                <div class="compare-card is-highlight">
+                  <span class="price-badge is-alt">Le plus complet</span>
+                  <figure class="compare-visual">
+                    <img src="./assets/images/facettes/facettes-8-superieures.webp" width="600" height="400" loading="lazy"
+                      alt="Facettes en céramique posées sur les dents du haut" class="w-100">
+                  </figure>
+                  <h3 class="h3 compare-title">Facettes céramique</h3>
+                  <p class="compare-price">4 000 <span>Dhs / dent</span></p>
+                  <p class="compare-price-full">Soit <strong>30 000 Dhs</strong> les 8 dents du haut</p>
+                  <p class="compare-delay"><ion-icon name="time-outline" aria-hidden="true"></ion-icon>2 à 3 séances · ~2 semaines</p>
+                  <ul class="compare-specs">
+                    <li><span class="spec-label">Esthétique</span><span class="spec-rate" role="img" aria-label="5 sur 5">●●●●●</span></li>
+                    <li><span class="spec-label">Rapidité</span><span class="spec-rate" role="img" aria-label="4 sur 5">●●●●○</span></li>
+                    <li><span class="spec-label">Budget</span><span class="spec-rate" role="img" aria-label="3 sur 5">●●●○○</span></li>
+                  </ul>
+                  <p class="compare-explain">Toute la face visible de la dent est recouverte, et pas seulement son bord. On referme les espaces, mais on reprend aussi la couleur et la forme de l'ensemble du sourire.</p>
+                  <ul class="compare-for">
+                    <li>Quand la <strong>teinte et la forme</strong> sont aussi à revoir</li>
+                    <li>Le <strong>Hollywood Smile</strong>, dès 30 000 Dhs les 8</li>
+                    <li>Demande de <strong>tailler légèrement l'émail</strong></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="scrollbar-item">
+                <div class="compare-card">
+                  <figure class="compare-visual">
+                    <img src="./assets/images/bagues-ceramique.webp" width="100" height="100" loading="lazy"
+                      alt="Bagues en céramique transparentes pour refermer un espace entre les dents" class="w-100">
+                  </figure>
+                  <h3 class="h3 compare-title">Orthodontie (bagues)</h3>
+                  <p class="compare-price">Dès 12 500 <span>Dhs / mâchoire</span></p>
+                  <p class="compare-price-full">Métalliques ou <strong>céramique transparente</strong></p>
+                  <p class="compare-delay"><ion-icon name="time-outline" aria-hidden="true"></ion-icon>12 à 24 mois</p>
+                  <ul class="compare-specs">
+                    <li><span class="spec-label">Esthétique</span><span class="spec-rate" role="img" aria-label="5 sur 5">●●●●●</span></li>
+                    <li><span class="spec-label">Dent conservée</span><span class="spec-rate" role="img" aria-label="5 sur 5">●●●●●</span></li>
+                    <li><span class="spec-label">Rapidité</span><span class="spec-rate" role="img" aria-label="1 sur 5">●○○○○</span></li>
+                  </ul>
+                  <p class="compare-explain">On déplace réellement les dents jusqu'à ce qu'elles se rejoignent. C'est la seule réponse quand les dents sont mal alignées, ou quand l'écart est trop large pour être comblé par de la céramique.</p>
+                  <ul class="compare-for">
+                    <li><strong>Aucune dent n'est touchée</strong> ni taillée</li>
+                    <li>Corrige aussi l'<strong>alignement et l'occlusion</strong></li>
+                    <li>Il faut compter <strong>12 à 24 mois</strong></li>
+                  </ul>
+                </div>
+              </li>
+
+            </ul>
+
+            <div class="case-cta">
+              <p class="case-cta-text">
+                Chips, facettes ou bagues : <strong>la largeur de l'espace et l'alignement de vos
+                dents</strong> décident. Une empreinte 3D suffit à trancher — et si les chips
+                conviennent, <strong>vous repartez avec l'espace refermé au 2ᵉ rendez-vous</strong>.
+              </p>
+              <div class="btn-group">
+                <a href="https://dr-k-khamlich-clinique-dentaire-arribat-rabat-agdal.reservio.com/#services-section"
+                   class="btn btn-primary" target="_blank" rel="noopener"
+                   aria-label="Prendre rendez-vous pour faire évaluer les espaces entre mes dents (nouvelle fenêtre)">
+                  <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>Voir si les chips conviennent — 250 Dhs
+                </a>
+                <a href="https://wa.me/212611381111?text=Bonjour%2C%20j%27ai%20un%20espace%20entre%20mes%20dents%20et%20je%20souhaite%20un%20devis%20pour%20des%20chips%20en%20c%C3%A9ramique."
+                   class="btn btn-wa" target="_blank" rel="noopener noreferrer"
+                   aria-label="Demander un devis pour des chips céramique sur WhatsApp (nouvelle fenêtre)">
+                  <ion-icon name="logo-whatsapp" aria-hidden="true"></ion-icon>Demander un devis pour mon cas
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+
+          <!-- ── CAS 5 : « je ne sais pas » ──────────────────────────────
+               Sortie rapide pour le visiteur qui n'arrive pas à se ranger
+               dans une des 4 situations : plutôt que de le laisser repartir,
+               on lui vend le bilan comme LA réponse à son hésitation. -->
+          <div class="case-panel" id="case-panel-5" role="tabpanel"
+               aria-labelledby="case-tab-5" tabindex="0" hidden>
 
             <div class="unsure-box">
 
@@ -971,6 +1112,10 @@
               <li>
                 <span class="decision-q">Vous n'avez plus de dents, ou votre dentier bouge ?</span>
                 <span class="decision-a">→ Prothèse totale 10 000 Dhs, ou All-on-4 dents fixes 52 000 Dhs</span>
+              </li>
+              <li>
+                <span class="decision-q">Vos dents sont bien alignées mais un espace vous gêne ?</span>
+                <span class="decision-a">→ Chips céramique 4 000 Dhs/chips — 8 000 Dhs l'espace, en 2 séances</span>
               </li>
               <li>
                 <span class="decision-q">Votre budget est serré cette année ?</span>
@@ -1444,11 +1589,35 @@
             <li class="faq-item">
               <h3>
                 <button class="faq-question" type="button" data-faq-question aria-expanded="false" aria-controls="faq-answer-11">
-                  <span>Comment entretenir une prothèse ?</span>
+                  <span>Qu'est-ce que les chips dentaires en céramique ?</span>
                   <ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon>
                 </button>
               </h3>
               <div class="faq-answer" id="faq-answer-11">
+                <div><p>Un <strong>chips</strong> est une fine pièce de céramique collée sur le bord d'une dent pour l'élargir de quelques dixièmes de millimètre et refermer l'espace qui la sépare de sa voisine. Pour un espace, on pose un chips sur <strong>chacune des deux dents qui le bordent</strong> : soit 2 chips à 4 000 Dhs pièce, <strong>8 000 Dhs au total</strong> pour un écart entre les deux incisives centrales. Le traitement tient en <strong>2 rendez-vous</strong> : empreinte au premier, collage au second. C'est de l'orthodontie instantanée — l'espace est refermé sans bagues et sans attendre des mois. Il faut en revanche que vos dents soient <strong>déjà bien alignées</strong> : si elles ne le sont pas, un traitement orthodontique reste nécessaire.</p></div>
+              </div>
+            </li>
+
+            <li class="faq-item">
+              <h3>
+                <button class="faq-question" type="button" data-faq-question aria-expanded="false" aria-controls="faq-answer-12">
+                  <span>Chips céramique ou bagues pour refermer un espace entre les dents ?</span>
+                  <ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon>
+                </button>
+              </h3>
+              <div class="faq-answer" id="faq-answer-12">
+                <div><p>Tout dépend de l'alignement de vos dents. Si elles sont <strong>déjà bien positionnées</strong> et que seul un espace vous gêne, les chips céramique le referment en <strong>2 séances, pour 8 000 Dhs</strong> : rien à porter, aucun mois d'attente. Si les dents sont mal alignées, chevauchées, ou si l'écart est trop large pour être comblé par de la céramique, <strong>l'orthodontie</strong> reste la bonne réponse — elle déplace réellement les dents, à partir de 12 500 Dhs par mâchoire, sur 12 à 24 mois. Le Dr Khamlich tranche à la consultation, empreinte 3D à l'appui.</p></div>
+              </div>
+            </li>
+
+            <li class="faq-item">
+              <h3>
+                <button class="faq-question" type="button" data-faq-question aria-expanded="false" aria-controls="faq-answer-13">
+                  <span>Comment entretenir une prothèse ?</span>
+                  <ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon>
+                </button>
+              </h3>
+              <div class="faq-answer" id="faq-answer-13">
                 <div><p>Pour une couronne ou un bridge fixe, l'entretien est celui de dents naturelles : brossage deux fois par jour, fil dentaire ou brossettes interdentaires, et un soin particulier au niveau du collet, là où la prothèse rejoint la gencive. Les brossettes sont indispensables sous les intermédiaires d'un bridge. Pour une prothèse amovible, elle se retire et se brosse après chaque repas, et se conserve dans un récipient adapté la nuit. Un <strong>détartrage annuel</strong> au cabinet complète l'entretien.</p></div>
               </div>
             </li>

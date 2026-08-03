@@ -1422,12 +1422,20 @@
   object-fit: contain;
 }
 
-/* Les 3 situations réelles sont illustrées par une photo/dessin ; l'onglet
+/* Les situations réelles sont illustrées par une photo/dessin ; l'onglet
    « Je ne sais pas » porte un point d'interrogation vectoriel. Comme il n'a
    pas d'<img>, il est exclu explicitement du placeholder ci-dessous. */
 .case-tab-icon.is-glyph ion-icon {
   font-size: 24px;
   color: var(--clr-text-light);
+}
+
+/* Une situation réelle peut elle aussi tourner au glyphe tant qu'aucune
+   illustration n'a été produite (cas « espaces entre les dents »). On la
+   teinte en primaire : le gris ci-dessus est réservé à la sortie neutre
+   « Je ne sais pas », qui ne doit pas se confondre avec un vrai cas. */
+.case-tab:not(.is-unsure) .case-tab-icon.is-glyph ion-icon {
+  color: var(--clr-primary);
 }
 
 /* Sur l'onglet actif, le fond passe en sombre : le glyphe doit suivre. */
@@ -1460,7 +1468,7 @@
 /* Explication en langage courant, posée juste avant les puces techniques :
    le visiteur doit pouvoir se représenter le geste (« on coiffe la dent »,
    « un pont au-dessus du trou ») avant qu'on lui liste des caractéristiques
-   qui ne lui parlent pas. */
+   qui ne lui parlent pas.
    Pas de filet ici : .compare-specs en pose déjà un juste au-dessus, deux
    traits rapprochés hacheraient la carte. */
 .compare-explain {
