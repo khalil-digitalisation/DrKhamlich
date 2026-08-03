@@ -24,7 +24,10 @@
       "Bash(node -e ' *)",
       "Bash(python -c \"import PIL; print\\('Pillow', PIL.__version__\\)\")",
       "Bash(python \"C:/Users/asus/AppData/Local/Temp/claude/c--Users-asus-Desktop-business-BD-DrKhamlich/17def152-dd84-4cfd-be47-71d5a5a7bfcb/scratchpad/convert_webp.py\")",
-      "Bash(python \"C:/Users/asus/AppData/Local/Temp/claude/c--Users-asus-Desktop-business-BD-DrKhamlich/17def152-dd84-4cfd-be47-71d5a5a7bfcb/scratchpad/update_refs.py\")"
+      "Bash(python \"C:/Users/asus/AppData/Local/Temp/claude/c--Users-asus-Desktop-business-BD-DrKhamlich/17def152-dd84-4cfd-be47-71d5a5a7bfcb/scratchpad/update_refs.py\")",
+      "Bash(git check-ignore *)",
+      "Bash(echo \"exit=$?\")",
+      "Bash(python -m http.server 8765 --bind 127.0.0.1)"
     ]
   }
 }
