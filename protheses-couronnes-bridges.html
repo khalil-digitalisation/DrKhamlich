@@ -400,69 +400,13 @@
 
 
       <!-- ================================================================
-           I — INTÉRÊT : ce que ça change concrètement. On parle du
-           quotidien retrouvé avant de parler technique et matériaux.
-      ================================================================= -->
-      <section class="section" id="presentation" aria-label="Pourquoi remplacer ses dents">
-        <div class="container">
-
-          <div class="section-head">
-            <p class="section-subtitle text-center">Vous mâchez d'un seul côté depuis des mois ?</p>
-            <h2 class="h2 section-title text-center">Ce qui change une fois la prothèse posée</h2>
-          </div>
-
-          <div class="outcome-grid">
-
-            <div class="outcome-card is-before">
-              <p class="outcome-label">Aujourd'hui</p>
-              <ul>
-                <li><ion-icon name="close-circle-outline" aria-hidden="true"></ion-icon><span>Vous évitez certains aliments, et vous mastiquez toujours du même côté.</span></li>
-                <li><ion-icon name="close-circle-outline" aria-hidden="true"></ion-icon><span>Vous souriez bouche fermée, et le trou s'agrandit d'année en année.</span></li>
-              </ul>
-            </div>
-
-            <div class="outcome-card is-after">
-              <p class="outcome-label">Dans 2 semaines à quelques mois</p>
-              <ul>
-                <li><ion-icon name="checkmark-circle" aria-hidden="true"></ion-icon><span>Vous <strong>remangez de tout</strong>, des deux côtés, sans y penser.</span></li>
-                <li><ion-icon name="checkmark-circle" aria-hidden="true"></ion-icon><span>Un sourire <strong>complet et naturel</strong>, dans la teinte de vos dents.</span></li>
-              </ul>
-            </div>
-
-          </div>
-
-
-          <!-- Ce qu'une dent manquante déclenche : rend l'urgence tangible
-               sans dramatiser. Sert la partie « coût de l'inaction ». -->
-          <div class="visibility-scale is-symptoms" style="margin-top:24px;">
-            <p class="visibility-scale-title">Ce qui se passe quand on laisse un trou en place</p>
-            <div class="visibility-track">
-              <div class="visibility-step">
-                <span class="dot" aria-hidden="true"></span>
-                Les dents voisines basculent
-              </div>
-              <div class="visibility-step">
-                <span class="dot" aria-hidden="true"></span>
-                L'os fond sous l'espace vide
-              </div>
-              <div class="visibility-step">
-                <span class="dot" aria-hidden="true"></span>
-                Le traitement devient plus lourd
-              </div>
-            </div>
-            <p class="visibility-legend">
-              Plus on attend, plus la solution se complique et se renchérit. Une dent remplacée tôt coûte moins cher qu'une arcade à reconstruire.
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-
-      <!-- ================================================================
-           D — DÉSIR (1/3) : le comparatif. C'est LE cœur de la page.
-           Le visiteur choisit d'abord SA situation, et on ne lui montre
-           ensuite que les solutions qui la concernent, avec leur prix.
+           D — DÉSIR (1/3) : le comparatif. C'est LE cœur de la page, et il
+           est remonté juste sous la hero : le visiteur qui arrive d'une
+           annonce cherche « quelle solution / combien » avant de vouloir
+           être convaincu. Il choisit d'abord SA situation, et on ne lui
+           montre ensuite que les solutions qui la concernent, avec leur prix.
+           La justification (« ce que ça change ») vient après, pour celui
+           qui a besoin d'être rassuré avant de prendre RDV.
       ================================================================= -->
       <section class="section section-alt" id="comparatif" aria-label="Quelle solution prothétique choisir">
         <div class="container">
@@ -480,83 +424,101 @@
                médicale : sur Google Ads le visiteur cherche à résoudre un
                problème, pas à choisir un matériau. Chaque onglet pilote un
                panneau de cartes ; une même solution peut apparaître dans
-               plusieurs cas. Le recentrage auto du rail au clic (cf. script
-               en fin de page) fait office de repère de balayage : plus
-               besoin d'un texte dédié pour signaler les onglets hors champ. -->
+               plusieurs cas.
+               En mobile le rail se pilote au balayage : l'onglet amené au
+               centre s'active tout seul (cf. script en fin de page), d'où la
+               consigne « faites glisser » plutôt que « touchez ». -->
           <p class="case-switch-instruction">
-            <ion-icon name="hand-left-outline" aria-hidden="true"></ion-icon>
-            <span>Touchez votre cas : <strong>les solutions possibles et leurs prix s'affichent juste en dessous</strong></span>
+            <ion-icon name="swap-horizontal-outline" aria-hidden="true"></ion-icon>
+            <span>Faites glisser pour trouver votre cas : <strong>les solutions possibles et leurs prix s'affichent juste en dessous</strong></span>
           </p>
 
           <!-- PICTOS : les 3 situations réelles portent une image (le visiteur
                se reconnaît plus vite dans un dessin que dans une phrase) ; la
                sortie « Je ne sais pas » porte un simple point d'interrogation
-               vectoriel, cohérent avec son rôle non médical. -->
-          <div class="case-switch" role="tablist" aria-label="Votre situation" data-case-switch>
+               vectoriel, cohérent avec son rôle non médical.
+               L'enveloppe .case-switch-rail porte les repères de défilement
+               (estompage des deux bords) : ils doivent rester fixes pendant
+               que le rail, lui, défile. -->
+          <div class="case-switch-rail at-start" data-case-rail>
+            <div class="case-switch" role="tablist" aria-label="Votre situation" data-case-switch>
 
-            <button class="case-tab" type="button" role="tab" id="case-tab-1"
-                    aria-controls="case-panel-1" aria-selected="true">
-              <span class="case-tab-icon" aria-hidden="true">
-                <img src="./assets/images/cas/cas-dent-abimee.webp" width="44" height="44" alt="" loading="lazy">
-              </span>
-              <span class="case-tab-texts">
-                <span class="case-tab-label">Une dent cassée ou abîmée</span>
-                <span class="case-tab-sub">je veux la sauver</span>
-              </span>
-            </button>
+              <button class="case-tab" type="button" role="tab" id="case-tab-1"
+                      aria-controls="case-panel-1" aria-selected="true">
+                <span class="case-tab-icon" aria-hidden="true">
+                  <img src="./assets/images/cas/cas-dent-abimee.webp" width="44" height="44" alt="" loading="lazy">
+                </span>
+                <span class="case-tab-texts">
+                  <span class="case-tab-label">Une dent cassée ou abîmée</span>
+                  <span class="case-tab-sub">je veux la sauver</span>
+                </span>
+              </button>
 
-            <button class="case-tab" type="button" role="tab" id="case-tab-2"
-                    aria-controls="case-panel-2" aria-selected="false" tabindex="-1">
-              <span class="case-tab-icon" aria-hidden="true">
-                <img src="./assets/images/cas/cas-dents-manquantes.webp" width="44" height="44" alt="" loading="lazy">
-              </span>
-              <span class="case-tab-texts">
-                <span class="case-tab-label">Il me manque 1 ou plusieurs dents</span>
-                <span class="case-tab-sub">j'ai un trou, je mâche mal</span>
-              </span>
-            </button>
+              <button class="case-tab" type="button" role="tab" id="case-tab-2"
+                      aria-controls="case-panel-2" aria-selected="false" tabindex="-1">
+                <span class="case-tab-icon" aria-hidden="true">
+                  <img src="./assets/images/cas/cas-dents-manquantes.webp" width="44" height="44" alt="" loading="lazy">
+                </span>
+                <span class="case-tab-texts">
+                  <span class="case-tab-label">Il me manque 1 ou plusieurs dents</span>
+                  <span class="case-tab-sub">j'ai un trou, je mâche mal</span>
+                </span>
+              </button>
 
-            <button class="case-tab" type="button" role="tab" id="case-tab-3"
-                    aria-controls="case-panel-3" aria-selected="false" tabindex="-1">
-              <span class="case-tab-icon" aria-hidden="true">
-                <img src="./assets/images/cas/cas-arcade-complete.webp" width="44" height="44" alt="" loading="lazy">
-              </span>
-              <span class="case-tab-texts">
-                <span class="case-tab-label">Je n'ai plus de dents</span>
-                <span class="case-tab-sub">ou mon dentier bouge</span>
-              </span>
-            </button>
+              <button class="case-tab" type="button" role="tab" id="case-tab-3"
+                      aria-controls="case-panel-3" aria-selected="false" tabindex="-1">
+                <span class="case-tab-icon" aria-hidden="true">
+                  <img src="./assets/images/cas/cas-arcade-complete.webp" width="44" height="44" alt="" loading="lazy">
+                </span>
+                <span class="case-tab-texts">
+                  <span class="case-tab-label">Je n'ai plus de dents</span>
+                  <span class="case-tab-sub">ou mon dentier bouge</span>
+                </span>
+              </button>
 
-            <!-- Espaces / diastème : situation purement esthétique, sans dent
-                 abîmée ni dent manquante. Elle n'était couverte nulle part sur
-                 le site alors que c'est la porte d'entrée des chips céramique.
-                 Faute d'illustration dédiée, on utilise un glyphe (teinté en
-                 primaire par le CSS pour ne pas se confondre avec la sortie
-                 neutre « Je ne sais pas »). -->
-            <button class="case-tab" type="button" role="tab" id="case-tab-4"
-                    aria-controls="case-panel-4" aria-selected="false" tabindex="-1">
-              <span class="case-tab-icon is-glyph" aria-hidden="true">
-                <ion-icon name="swap-horizontal-outline"></ion-icon>
-              </span>
-              <span class="case-tab-texts">
-                <span class="case-tab-label">J'ai des espaces entre mes dents</span>
-                <span class="case-tab-sub">dents écartées, diastème</span>
-              </span>
-            </button>
+              <!-- Espaces / diastème : situation purement esthétique, sans dent
+                   abîmée ni dent manquante. Elle n'était couverte nulle part sur
+                   le site alors que c'est la porte d'entrée des chips céramique.
+                   Faute d'illustration dédiée, on utilise un glyphe (teinté en
+                   primaire par le CSS pour ne pas se confondre avec la sortie
+                   neutre « Je ne sais pas »). -->
+              <button class="case-tab" type="button" role="tab" id="case-tab-4"
+                      aria-controls="case-panel-4" aria-selected="false" tabindex="-1">
+                <span class="case-tab-icon is-glyph" aria-hidden="true">
+                  <ion-icon name="swap-horizontal-outline"></ion-icon>
+                </span>
+                <span class="case-tab-texts">
+                  <span class="case-tab-label">J'ai des espaces entre mes dents</span>
+                  <span class="case-tab-sub">dents écartées, diastème</span>
+                </span>
+              </button>
 
-            <!-- Sortie de secours : le visiteur qui hésite n'abandonne pas la
-                 page, on le renvoie vers le bilan plutôt que vers Google. -->
-            <button class="case-tab is-unsure" type="button" role="tab" id="case-tab-5"
-                    aria-controls="case-panel-5" aria-selected="false" tabindex="-1">
-              <span class="case-tab-icon is-glyph" aria-hidden="true">
-                <ion-icon name="help-outline"></ion-icon>
-              </span>
-              <span class="case-tab-texts">
-                <span class="case-tab-label">Je ne sais pas</span>
-                <span class="case-tab-sub">aidez-moi à choisir</span>
-              </span>
-            </button>
+              <!-- Sortie de secours : le visiteur qui hésite n'abandonne pas la
+                   page, on le renvoie vers le bilan plutôt que vers Google. -->
+              <button class="case-tab is-unsure" type="button" role="tab" id="case-tab-5"
+                      aria-controls="case-panel-5" aria-selected="false" tabindex="-1">
+                <span class="case-tab-icon is-glyph" aria-hidden="true">
+                  <ion-icon name="help-outline"></ion-icon>
+                </span>
+                <span class="case-tab-texts">
+                  <span class="case-tab-label">Je ne sais pas</span>
+                  <span class="case-tab-sub">aidez-moi à choisir</span>
+                </span>
+              </button>
 
+            </div>
+          </div>
+
+          <!-- Puces de position : elles annoncent d'emblée qu'il y a 5 cas et
+               montrent où l'on en est dans le balayage. Purement décoratives,
+               l'état réel est porté par aria-selected sur les onglets ; le
+               script les garde en phase avec l'onglet actif. -->
+          <div class="case-switch-dots" aria-hidden="true" data-case-dots>
+            <span class="is-active"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
 
           <!-- ── CAS 1 : une dent cassée, abîmée ou dévitalisée (par défaut) ── -->
@@ -1161,6 +1123,70 @@
 
         </div>
       </section>
+
+
+      <!-- ================================================================
+           I — INTÉRÊT : ce que ça change concrètement. Placé après le
+           comparatif : le visiteur connaît déjà la solution et son prix,
+           on lui montre maintenant le quotidien retrouvé et le coût de
+           l'attente — c'est ce qui déclenche la prise de RDV.
+      ================================================================= -->
+      <section class="section" id="presentation" aria-label="Pourquoi remplacer ses dents">
+        <div class="container">
+
+          <div class="section-head">
+            <p class="section-subtitle text-center">Vous mâchez d'un seul côté depuis des mois ?</p>
+            <h2 class="h2 section-title text-center">Ce qui change une fois la prothèse posée</h2>
+          </div>
+
+          <div class="outcome-grid">
+
+            <div class="outcome-card is-before">
+              <p class="outcome-label">Aujourd'hui</p>
+              <ul>
+                <li><ion-icon name="close-circle-outline" aria-hidden="true"></ion-icon><span>Vous évitez certains aliments, et vous mastiquez toujours du même côté.</span></li>
+                <li><ion-icon name="close-circle-outline" aria-hidden="true"></ion-icon><span>Vous souriez bouche fermée, et le trou s'agrandit d'année en année.</span></li>
+              </ul>
+            </div>
+
+            <div class="outcome-card is-after">
+              <p class="outcome-label">Dans 2 semaines à quelques mois</p>
+              <ul>
+                <li><ion-icon name="checkmark-circle" aria-hidden="true"></ion-icon><span>Vous <strong>remangez de tout</strong>, des deux côtés, sans y penser.</span></li>
+                <li><ion-icon name="checkmark-circle" aria-hidden="true"></ion-icon><span>Un sourire <strong>complet et naturel</strong>, dans la teinte de vos dents.</span></li>
+              </ul>
+            </div>
+
+          </div>
+
+
+          <!-- Ce qu'une dent manquante déclenche : rend l'urgence tangible
+               sans dramatiser. Sert la partie « coût de l'inaction ». -->
+          <div class="visibility-scale is-symptoms" style="margin-top:24px;">
+            <p class="visibility-scale-title">Ce qui se passe quand on laisse un trou en place</p>
+            <div class="visibility-track">
+              <div class="visibility-step">
+                <span class="dot" aria-hidden="true"></span>
+                Les dents voisines basculent
+              </div>
+              <div class="visibility-step">
+                <span class="dot" aria-hidden="true"></span>
+                L'os fond sous l'espace vide
+              </div>
+              <div class="visibility-step">
+                <span class="dot" aria-hidden="true"></span>
+                Le traitement devient plus lourd
+              </div>
+            </div>
+            <p class="visibility-legend">
+              Plus on attend, plus la solution se complique et se renchérit. Une dent remplacée tôt coûte moins cher qu'une arcade à reconstruire.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+
 
 
       <!-- ================================================================
@@ -2129,13 +2155,37 @@
       const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
       if (!tabs.length) return;
 
+      const rail = document.querySelector('[data-case-rail]');
+      const dots = Array.from(document.querySelectorAll('[data-case-dots] span'));
+
       const panelOf = function (tab) {
         return document.getElementById(tab.getAttribute('aria-controls'));
       };
 
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-      // Recentre l'onglet choisi dans son rail. En mobile les 4 situations
+      // Le rail ne défile qu'en mobile : au-delà, les onglets sont sur une
+      // ligne et l'auto-sélection au balayage n'a plus de sens.
+      const isScrollable = function () {
+        return tablist.scrollWidth - tablist.clientWidth > 4;
+      };
+
+      // Estompage des bords : on l'éteint à l'extrémité atteinte pour ne pas
+      // suggérer un contenu qui n'existe plus.
+      const updateEdges = function () {
+        if (!rail) return;
+        const max = tablist.scrollWidth - tablist.clientWidth;
+        rail.classList.toggle('at-start', tablist.scrollLeft <= 4);
+        rail.classList.toggle('at-end', tablist.scrollLeft >= max - 4);
+      };
+
+      // Levé pendant les défilements déclenchés par le script : l'écoute du
+      // balayage (plus bas) doit les ignorer, sinon centerTab() se rappellerait
+      // lui-même en boucle via l'auto-sélection.
+      let programmatic = false;
+      let programmaticEnd = null;
+
+      // Recentre l'onglet choisi dans son rail. En mobile les 5 situations
       // ne tiennent pas à l'écran : sans ça, on touche un onglet à moitié
       // sorti du cadre et il y reste, ce qui donne l'impression que le clic
       // n'a pas été pris en compte. On calcule à partir des rectangles plutôt
@@ -2149,10 +2199,27 @@
         const left = Math.max(0, Math.min(tablist.scrollLeft + delta, max));
 
         if (Math.abs(left - tablist.scrollLeft) < 2) return;
+
+        programmatic = true;
+        window.clearTimeout(programmaticEnd);
         tablist.scrollTo({ left: left, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+
+        // Il n'existe pas d'événement de fin de scrollTo() fiable partout
+        // (scrollend est encore inégalement supporté) : on rend la main après
+        // une durée couvrant l'animation de défilement fluide.
+        programmaticEnd = window.setTimeout(function () {
+          programmatic = false;
+          updateEdges();
+        }, reduceMotion.matches ? 60 : 500);
       };
 
-      const select = function (tab, moveFocus) {
+      // Applique l'état sélectionné SANS toucher au défilement du rail.
+      // Séparé de select() parce que l'auto-sélection au balayage doit
+      // pouvoir activer un onglet pendant que le doigt fait défiler le rail :
+      // le recentrer à cet instant fabriquerait un conflit de défilement.
+      const mark = function (tab) {
+        if (tab.getAttribute('aria-selected') === 'true') return;
+
         tabs.forEach(function (t) {
           const isActive = t === tab;
           t.setAttribute('aria-selected', isActive ? 'true' : 'false');
@@ -2164,6 +2231,10 @@
           if (panel) panel.hidden = !isActive;
         });
 
+        dots.forEach(function (dot, i) {
+          dot.classList.toggle('is-active', tabs[i] === tab);
+        });
+
         // Le carrousel du panneau qui vient d'apparaître était masqué : sa
         // position de défilement n'a pas été recalculée. On le remet au début
         // pour que la 1ʳᵉ carte soit toujours le point d'entrée.
@@ -2172,7 +2243,10 @@
           const list = panel.querySelector('.compare-list');
           if (list) list.scrollLeft = 0;
         }
+      };
 
+      const select = function (tab, moveFocus) {
+        mark(tab);
         centerTab(tab);
 
         // preventScroll : sans lui, le focus clavier ramène brutalement
@@ -2199,6 +2273,62 @@
           select(target, true);
         });
       });
+
+      // ── AUTO-SÉLECTION AU BALAYAGE (mobile) ──────────────────────────
+      // Avant, il fallait deux gestes : faire défiler jusqu'à son cas, PUIS
+      // appuyer dessus. Désormais l'onglet le plus proche du centre du rail
+      // s'active de lui-même, le balayage suffit.
+      //
+      // Le piège est la boucle de réaction : centerTab() provoque lui aussi
+      // un défilement, qui rappellerait ce gestionnaire. On neutralise donc
+      // l'écoute pendant les défilements que le script a lui-même déclenchés
+      // (drapeau posé par centerTab, levé à la fin du mouvement).
+      const nearestTab = function () {
+        const railBox = tablist.getBoundingClientRect();
+        const center = railBox.left + railBox.width / 2;
+        let best = null;
+        let bestDist = Infinity;
+
+        tabs.forEach(function (tab) {
+          const box = tab.getBoundingClientRect();
+          const dist = Math.abs((box.left + box.width / 2) - center);
+          if (dist < bestDist) { bestDist = dist; best = tab; }
+        });
+
+        return best;
+      };
+
+      let settle = null;
+
+      // Si le doigt se repose sur le rail pendant un recentrage animé, c'est
+      // l'utilisateur qui reprend la main : on lève immédiatement le drapeau,
+      // sinon son balayage serait ignoré jusqu'à la fin du délai ci-dessus.
+      tablist.addEventListener('touchstart', function () {
+        window.clearTimeout(programmaticEnd);
+        programmatic = false;
+      }, { passive: true });
+
+      tablist.addEventListener('scroll', function () {
+        updateEdges();
+
+        // Le défilement en cours vient de centerTab() : l'onglet cible est
+        // déjà sélectionné, il n'y a rien à recalculer.
+        if (programmatic) return;
+        if (!isScrollable()) return;
+
+        // On attend l'arrêt du geste (~90 ms sans nouvel événement) plutôt
+        // que de sélectionner en continu : sinon chaque onglet traversé
+        // ferait clignoter les panneaux pendant le balayage.
+        window.clearTimeout(settle);
+        settle = window.setTimeout(function () {
+          const tab = nearestTab();
+          if (tab) mark(tab);
+        }, 90);
+      }, { passive: true });
+
+      // État initial des repères (le rail est en début de course au chargement).
+      updateEdges();
+      window.addEventListener('resize', updateEdges);
     })();
   </script>
 

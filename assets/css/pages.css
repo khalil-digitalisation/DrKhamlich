@@ -1324,6 +1324,45 @@
   color: var(--clr-primary-dark);
 }
 
+/* Rail des onglets. Il est enveloppé pour pouvoir poser par-dessus les
+   repères de défilement (dégradés latéraux + puces de position) sans qu'ils
+   défilent avec le contenu. */
+.case-switch-rail {
+  position: relative;
+}
+
+/* Dégradés d'estompage aux deux bords : c'est le signal le plus lisible que
+   « ça continue en dehors du cadre ». Ils s'effacent quand on atteint
+   l'extrémité correspondante (classes posées par le script), pour ne pas
+   suggérer un contenu qui n'existe plus. */
+.case-switch-rail::before,
+.case-switch-rail::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 12px;
+  width: 40px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+/* Le comparatif est une .section-alt : les dégradés se fondent donc dans
+   --clr-accent, le fond réel de la section, et non dans du blanc. */
+.case-switch-rail::before {
+  left: 0;
+  background: linear-gradient(to right, var(--clr-accent), transparent);
+}
+
+.case-switch-rail::after {
+  right: 0;
+  background: linear-gradient(to left, var(--clr-accent), transparent);
+}
+
+.case-switch-rail.at-start::before,
+.case-switch-rail.at-end::after { opacity: 0; }
+
 .case-switch {
   display: flex;
   gap: 8px;
@@ -1331,10 +1370,42 @@
   scrollbar-width: none;
   padding: 4px 0 12px;
   margin-bottom: 8px;
-  scroll-snap-type: x proximity;
+  /* mandatory (et non proximity) : chaque geste de balayage se cale
+     exactement sur un onglet, ce qui rend fiable l'auto-sélection au
+     défilement — sans lui le rail peut s'arrêter entre deux onglets. */
+  scroll-snap-type: x mandatory;
+  /* Le 1er et le dernier onglet doivent pouvoir se centrer comme les autres :
+     sans cette marge de manœuvre, ils restent collés au bord et le script ne
+     peut jamais les amener au centre. */
+  scroll-padding-inline: 50%;
 }
 
 .case-switch::-webkit-scrollbar { display: none; }
+
+/* Puces de position sous le rail : elles disent d'un coup d'œil combien il y
+   a de cas et où l'on se trouve. Décoratives — l'état sélectionné est déjà
+   porté par aria-selected sur les onglets. */
+.case-switch-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.case-switch-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--clr-primary);
+  opacity: 0.28;
+  transition: var(--transition);
+}
+
+.case-switch-dots span.is-active {
+  opacity: 1;
+  width: 20px;
+  border-radius: var(--radius-pill);
+}
 
 .case-tab {
   flex: 0 0 auto;
@@ -1675,7 +1746,15 @@
     overflow-x: visible;
     justify-content: center;
     flex-wrap: wrap;
+    scroll-snap-type: none;
   }
+
+  /* Tous les repères de défilement (estompage des bords, puces de position)
+     n'ont plus d'objet sans rail à balayer. */
+  .case-switch-rail::before,
+  .case-switch-rail::after { content: none; }
+
+  .case-switch-dots { display: none; }
 
   .case-tab { align-items: center; text-align: center; }
 
