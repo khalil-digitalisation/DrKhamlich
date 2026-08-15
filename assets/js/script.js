@@ -62,6 +62,38 @@ window.addEventListener('scroll', function () {
 
 
 /**
+ * Barre de progression de lecture
+ * Se remplit au fur et à mesure que le visiteur descend dans la page.
+ */
+const progressBar = document.querySelector('[data-scroll-progress]');
+
+if (progressBar) {
+  let progressTicking = false;
+
+  const updateProgress = function () {
+    progressTicking = false;
+    // Hauteur réellement défilable ; 0 si la page tient dans l'écran.
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    let ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
+    if (ratio < 0) ratio = 0;
+    if (ratio > 1) ratio = 1;
+    progressBar.style.width = (ratio * 100).toFixed(2) + '%';
+  };
+
+  const requestProgressUpdate = function () {
+    if (progressTicking) return;
+    progressTicking = true;
+    window.requestAnimationFrame(updateProgress);
+  };
+
+  window.addEventListener('scroll', requestProgressUpdate, { passive: true });
+  window.addEventListener('resize', requestProgressUpdate);
+  window.addEventListener('load', requestProgressUpdate);
+  updateProgress();
+}
+
+
+/**
  * Accordéon FAQ (pages dédiées)
  * Le contenu reste dans le DOM pour rester indexable par Google.
  */

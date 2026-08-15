@@ -369,6 +369,51 @@ main { overflow-x: clip; }
   border-bottom-color: transparent;
 }
 
+/* Barre de progression de lecture
+   Rail collé en bas de la barre logo + menu, donc toujours visible puisque
+   .header est sticky. Remplace le border-bottom pour ne pas ajouter
+   d'épaisseur au header. */
+.header-bottom { border-bottom-color: transparent; }
+
+.scroll-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--clr-border);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  /* Largeur pilotée en JS (0% → 100%) : plus robuste qu'un scaleX(var(...)),
+     que Chrome ne recalcule pas toujours au vol. */
+  width: 0;
+  /* Le dégradé est dimensionné sur la largeur de l'écran, pas sur celle de la
+     barre : sans cela il serait comprimé dans les quelques pixels du début et
+     les couleurs glisseraient pendant le scroll. Ici chaque point de la ligne
+     garde sa teinte définitive, la barre ne fait que la révéler.
+     Bleu profond au départ → cyan clair en fin de page. */
+  background-image: linear-gradient(90deg,
+    #0369a1 0%,
+    var(--clr-primary-dark) 10%,
+    var(--clr-primary) 20%,
+    #1fbadd 50%,
+    #33cde8 75%,
+    #40d3eb 100%);
+  background-size: 100vw 100%;
+  background-repeat: no-repeat;
+  /* Lisse les à-coups du scroll sans retarder le ressenti */
+  transition: width 0.12s linear;
+  will-change: width;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress-bar { transition: none; }
+}
+
 .header-bottom .container {
   display: flex;
   justify-content: space-between;
